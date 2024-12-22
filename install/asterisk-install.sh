@@ -14,7 +14,8 @@ network_check
 update_os
 
 msg_info "Installing Asterisk"
-apk add asterisk
+$STD apk add asterisk
+$STD rc-update add asterisk default
 msg_ok "Installed Asterisk"
 
 motd_ssh
