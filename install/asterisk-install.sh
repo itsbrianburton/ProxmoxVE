@@ -14,8 +14,26 @@ network_check
 update_os
 
 msg_info "Installing Asterisk"
-$STD apk add asterisk
-$STD rc-update add asterisk default
+$STD apt update
+$STD apt upgrade
+$STD apt install curl
+$STD cd /usr/src
+$STD wget http://downloads.asterisk.org/pub/telephony/asterisk/asterisk-20-current.tar.gz
+$STD tar zfxf asterisk-20-current.tar.gz
+$STD rm -f asterisk-20-current.tar.gz
+$STD cd asterisk-20.*
+$STD contrib/scripts/install_prereq install
+
+$STD ./configure
+$STD make
+$STD make install
+$STD make samples
+$STD mkdir -p /etc/asterisk/samples
+$STD mv /etc/asterisk/*.* /etc/asterisk/samples/
+$STD make config
+
+$STD systemctl enable asterisk.service
+$STD systemctl start asterisk.service
 msg_ok "Installed Asterisk"
 
 motd_ssh
