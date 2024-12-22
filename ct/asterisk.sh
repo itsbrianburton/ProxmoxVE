@@ -6,7 +6,7 @@ source <(curl -s https://raw.githubusercontent.com/community-scripts/ProxmoxVE/m
 # Source: https://github.com/asterisk/asterisk
 
 # App Default Values
-APP="asterisk"
+APP="Asterisk"
 var_tags="pbx;asterisk"
 var_cpu="1"
 var_ram="2048"
