@@ -31,13 +31,11 @@ $STD make
 msg_info "Make Complete"
 $STD make install
 $STD make samples
-$STD mkdir -p /etc/asterisk/samples
-$STD mv /etc/asterisk/*.* /etc/asterisk/samples/
 $STD make config
-
-$STD systemctl enable asterisk.service
-$STD systemctl start asterisk.service
 msg_ok "Installed Asterisk"
+$STD systemctl enable asterisk
+$STD systemctl start asterisk
+msg_ok "Asterisk Started"
 
 motd_ssh
 customize
